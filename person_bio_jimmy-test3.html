@@ -1,0 +1,123 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選手生理趨勢圖</title>
+    <style>
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 10px;
+			padding-top: 2px;
+			border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+		h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a237e;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .sport-icon {
+            width: 32px;
+            height: 32px;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #1a237e, #3949ab);
+        }
+        .bio {
+			margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            border-color: black;
+            border-width: 1px;
+            border-style: solid;
+            /* box-shadow: 0 4px 6px rgba(0,0,0,0.1); */
+            backdrop-filter: blur(5px);
+            height: auto;
+            min-height: 100px;
+			
+        }
+        .bio iframe {
+            width: 100%;
+            height: 120px;
+            border: none;
+            background: transparent;
+        }
+        .charts {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .top-row, .bottom-row {
+            display: flex;
+            gap: 10px;
+        }
+        .top-row .chart {
+            flex: 1;
+        }
+        .bottom-row .chart {
+            flex: 1;
+        }
+        .chart img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <img src="taekwondo-kick.png" alt="Martial Arts" class="sport-icon">
+                選手生理趨勢圖
+            </h1>
+        </div>
+        <div class="bio">
+            <iframe src="./Jsviewer_content1.txt" ></iframe>
+        </div>
+        <div class="charts">
+            <div class="top-row">
+                <div class="chart"><img src="bio-11.jpeg" alt="體脂率/體重"></div>
+                <div class="chart"><img src="bio-12.jpeg" alt="肌肉重/脂肪重"></div>
+                <div class="chart"><img src="bio-13.jpeg" alt="水份%/公斤"></div>
+            </div>
+            <div class="bottom-row">
+                <div class="chart"><img src="bio-21.jpeg" alt="體重"></div>
+                <div class="chart"><img src="bio-22.jpeg" alt="體脂率"></div>
+                <div class="chart"><img src="bio-23.jpeg" alt="總水份"></div>
+                <div class="chart"><img src="bio-24.jpeg" alt="去脂重"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

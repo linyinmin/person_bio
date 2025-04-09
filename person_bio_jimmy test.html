@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選手生理數據分析</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.40);
+            z-index: -1;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1a237e;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #1a237e, #3949ab);
+        }
+        
+        .data-container {
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            height: auto;
+            min-height: 100px;
+        }
+        
+        .data-container iframe {
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+            border: none;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        
+        .chart-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 30px;
+        }
+        
+        .chart-row {
+            display: flex;
+            gap: 0;
+            margin-bottom: 0;
+        }
+        
+        .chart-row.top {
+            justify-content: space-between;
+        }
+        
+        .chart-row.bottom {
+            justify-content: space-between;
+        }
+        
+        .chart-item {
+            flex: 1;
+            height: 300px;
+            border-radius: 0;
+            box-shadow: none;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0;
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chart-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .chart-item img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .data-container {
+                padding: 15px;
+            }
+            
+            .data-container iframe {
+                height: 250px;
+            }
+            
+            .chart-grid {
+                gap: 20px;
+            }
+            
+            .chart-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .chart-item {
+                width: 100%;
+                height: 250px;
+                border-radius: 12px;
+                padding: 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            }
+            
+            .chart-item img {
+                border-radius: 8px;
+                object-fit: contain;
+            }
+        }
+        
+        /* Lightbox 樣式 */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            cursor: pointer;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <h1>選手生理趨勢圖</h1>
+    
+    <div class="data-container">
+        <iframe src="./Jsviewer_content1.txt" style="border: none;"></iframe>
+    </div>
+    
+    <div class="chart-grid">
+        <div class="chart-row top">
+            <div class="chart-item">
+                <img src="bio-11.jpeg" alt="生理數據圖表1">
+            </div>
+            <div class="chart-item">
+                <img src="bio-12.jpeg" alt="生理數據圖表2">
+            </div>
+            <div class="chart-item">
+                <img src="bio-13.jpeg" alt="生理數據圖表3">
+            </div>
+        </div>
+        
+        <div class="chart-row bottom">
+            <div class="chart-item">
+                <img src="bio-21.jpeg" alt="生理數據圖表4">
+            </div>
+            <div class="chart-item">
+                <img src="bio-22.jpeg" alt="生理數據圖表5">
+            </div>
+            <div class="chart-item">
+                <img src="bio-23.jpeg" alt="生理數據圖表6">
+            </div>
+            <div class="chart-item">
+                <img src="bio-24.jpeg" alt="生理數據圖表7">
+            </div>
+        </div>
+    </div>
+    
+    <!-- 添加 Lightbox 容器 -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-button">&times;</span>
+        <img src="" alt="放大圖片">
+    </div>
+    
+    <script>
+        // Lightbox 功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('img');
+            const closeButton = lightbox.querySelector('.close-button');
+            
+            // 為所有圖表圖片添加點擊事件
+            document.querySelectorAll('.chart-item img').forEach(img => {
+                img.addEventListener('click', function() {
+                    lightboxImg.src = this.src;
+                    lightbox.style.display = 'block';
+                });
+            });
+            
+            // 點擊關閉按鈕關閉 lightbox
+            closeButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lightbox.style.display = 'none';
+            });
+            
+            // 點擊 lightbox 背景關閉
+            lightbox.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+            });
+            
+            // 按 ESC 鍵關閉 lightbox
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    lightbox.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
